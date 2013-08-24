@@ -4,9 +4,9 @@ package uk.co.homletmoo.ld27
 	import net.flashpunk.FP;
 	import net.flashpunk.Tweener;
 	import net.flashpunk.utils.Key;
-	import uk.co.homletmoo.ld27.world.SplashWorld;
+	import uk.co.homletmoo.ld27.entity.LevelManager;
 	
-	[SWF (width = "800", height = "600", backgroundColor = "#c0c0c0")]
+	[SWF (width = "800", height = "600", backgroundColor = "#000000")]
 	
 	/**
 	 * ...
@@ -15,6 +15,9 @@ package uk.co.homletmoo.ld27
 	public class Main extends Engine
 	{
 		public static var quake:Quake;
+		
+		public static var levelManager:LevelManager;
+		
 		
 		public function Main():void
 		{
@@ -27,7 +30,9 @@ package uk.co.homletmoo.ld27
 			
 			quake = new Quake();
 			
-			FP.console.enable();
+			FP.screen.color = 0xFF000000;
+			
+//			FP.console.enable();
 			FP.console.toggleKey = Key.TAB;
 		}
 		
@@ -35,13 +40,14 @@ package uk.co.homletmoo.ld27
 		{
 //			Sound.initialize();
 //			InputRegistry.register();
-			
-			FP.world = new SplashWorld();
+
+			levelManager = new LevelManager();
 		}
 		
 		override public function update():void
 		{
 			quake.update();
+			levelManager.update();
 			
 			super.update();
 		}
