@@ -23,22 +23,39 @@ package uk.co.homletmoo.ld27.entity.powered
 		private var indicator:Indicator;
 		
 		
-		public function TrapDoor( x:int, y:int, circuit:int ) 
+		public function TrapDoor( x:int, y:int, circuit:int, flipped:Boolean ) 
 		{
-			super( x - 14 * Display.SCALE, y );
+			super( x - int( !flipped ) * ( 14 * Display.SCALE ), y );
 			
-			indicator = new Indicator( 2 * Display.SCALE, 4 * Display.SCALE, circuit );
+			indicator = new Indicator(
+				7 * Display.SCALE + int( flipped ) * ( 11 * Display.SCALE ),
+				4 * Display.SCALE,
+				circuit
+			);
 			addGraphic( indicator );
 			
 			layer = Layer.OBJECTS;
 			
 			spriteMap = new Spritemap( Assets.TRAPDOOR, 30, 16 );
 			spriteMap.scale = Display.SCALE;
-			spriteMap.add( STATE_CLOSED.toString(), [0, 1], 4, false );
-			spriteMap.add( STATE_OPEN.toString(), [2, 3], 4, false );
+			
+			if ( !flipped )
+			{
+				spriteMap.add( STATE_CLOSED.toString(), [0, 1], 4, false );
+				spriteMap.add( STATE_OPEN.toString(), [2, 3], 4, false );
+			} else
+			{
+				spriteMap.add( STATE_CLOSED.toString(), [4, 5], 4, false );
+				spriteMap.add( STATE_OPEN.toString(), [6, 7], 4, false );
+			}
 			
 			addGraphic( spriteMap );
-			setHitbox( 16 * Display.SCALE, 3 * Display.SCALE, -14 * Display.SCALE, 0 );
+			setHitbox(
+				16 * Display.SCALE,
+				3 * Display.SCALE,
+				int( !flipped ) * -14 * Display.SCALE,
+				0
+			);
 		}
 		
 		public function setPowered( powered:Boolean ):void

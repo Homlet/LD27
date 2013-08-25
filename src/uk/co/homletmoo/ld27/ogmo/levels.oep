@@ -148,6 +148,7 @@
             <string>GREEN</string>
           </Elements>
         </ValueDefinition>
+        <ValueDefinition xsi:type="IntValueDefinition" Name="rotation" Default="0" Min="0" Max="360" ShowSlider="false" />
       </ValueDefinitions>
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
@@ -194,6 +195,7 @@
             <string>GREEN</string>
           </Elements>
         </ValueDefinition>
+        <ValueDefinition xsi:type="BoolValueDefinition" Name="flipped" Default="false" />
       </ValueDefinitions>
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>

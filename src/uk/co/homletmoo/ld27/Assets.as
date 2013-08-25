@@ -1,5 +1,6 @@
 package uk.co.homletmoo.ld27 
 {
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Matrix;
 	import net.flashpunk.FP;
@@ -25,7 +26,7 @@ package uk.co.homletmoo.ld27
 		}
 		
 		// Graphics
-		[Embed (source = "res/HMV4.png")]
+		[Embed (source = "res/HMV2.png")]
 		public static const HM_LOGO_RAW:Class;
 		public static const HM_LOGO:BitmapData = FP.getBitmap( HM_LOGO_RAW );
 		
@@ -80,14 +81,44 @@ package uk.co.homletmoo.ld27
 		public static const TOGGLE_RAW:Class;
 		public static const TOGGLE:BitmapData = FP.getBitmap( TOGGLE_RAW );
 		
+		[Embed (source = "res/glare.png")]
+		public static const GLARE_RAW:Class;
+		public static const GLARE:BitmapData = FP.getBitmap( GLARE_RAW );
+		
+		[Embed (source = "res/start.png")]
+		public static const START_RAW:Class;
+		public static const START:BitmapData = FP.getBitmap( START_RAW );
+		
 		// Ogmo
-		[Embed (source = "ogmo/level_01.oel", mimeType = "application/octet-stream" )]
-		public static const OGMO_LEVEL_01:Class;
-		[Embed (source = "ogmo/level_02.oel", mimeType = "application/octet-stream" )]
-		public static const OGMO_LEVEL_02:Class;
-		[Embed (source = "ogmo/level_03.oel", mimeType = "application/octet-stream" )]
-		public static const OGMO_LEVEL_03:Class;
-		[Embed (source = "ogmo/level_04.oel", mimeType = "application/octet-stream" )]
-		public static const OGMO_LEVEL_04:Class;
+		[Embed (source = "ogmo/level_001.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_001:Class;
+		[Embed (source = "ogmo/level_002.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_002:Class;
+		[Embed (source = "ogmo/level_003.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_003:Class;
+		[Embed (source = "ogmo/level_004.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_004:Class;
+		[Embed (source = "ogmo/level_005.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_005:Class;
+		[Embed (source = "ogmo/level_006.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_006:Class;
+		[Embed (source = "ogmo/level_007.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_007:Class;
+		[Embed (source = "ogmo/level_008.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_008:Class;
+		[Embed (source = "ogmo/level_009.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_009:Class;
+		[Embed (source = "ogmo/level_010.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_010:Class;
+		[Embed (source = "ogmo/level_011.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_011:Class;
+		[Embed (source = "ogmo/level_012.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_012:Class;
+		[Embed (source = "ogmo/level_013.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_013:Class;
+		[Embed (source = "ogmo/level_014.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_014:Class;
+		[Embed (source = "ogmo/level_015.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_015:Class;
 	}
 }

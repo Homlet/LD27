@@ -7,7 +7,9 @@ package uk.co.homletmoo.ld27.entity
 	import net.flashpunk.graphics.Text;
 	import uk.co.homletmoo.ld27.Assets;
 	import uk.co.homletmoo.ld27.Display;
+	import uk.co.homletmoo.ld27.Helper;
 	import uk.co.homletmoo.ld27.Layer;
+	import uk.co.homletmoo.ld27.Time;
 	
 	/**
 	 * ...
@@ -20,6 +22,8 @@ package uk.co.homletmoo.ld27.entity
 		
 		private var handImg:Image;
 		private var faceMap:Spritemap;
+		
+		private var timeText:Text;
 		
 		private var state:int;
 		
@@ -46,8 +50,19 @@ package uk.co.homletmoo.ld27.entity
 			faceMap.add( STATE_POWERED.toString(), [1] );
 			faceMap.play( state.toString() );
 			
+			timeText = new Text( "5:55", 0, 0 );
+			timeText.scale = Display.SCALE;
+			timeText.color = 0xFFFFFFFF;
+			timeText.scrollX = timeText.scrollY = 0;
+			timeText.size = 8;
+			timeText.smooth = false;
+			timeText.x = -timeText.scaledWidth + 6 * Display.SCALE;
+			timeText.y = -timeText.scaledHeight / 2.0;
+			timeText.text = getTimestamp();
+			
 			addGraphic( faceMap );
 			addGraphic( handImg );
+			addGraphic( timeText );
 		}
 		
 		override public function update():void
@@ -57,7 +72,17 @@ package uk.co.homletmoo.ld27.entity
 			state = ( Math.floor( handImg.angle / 60 ) % 2 ) ? STATE_POWERED : STATE_UNPOWERED;
 			faceMap.play( state.toString() );
 			
+			timeText.text = getTimestamp();
+			timeText.x = -timeText.scaledWidth + 6 * Display.SCALE;
+			
 			super.update();
+		}
+		
+		private function getTimestamp():String
+		{
+			var minutes:int = Math.floor( Time.TIME / 60.0 );
+			var seconds:int = Time.TIME % 60;
+			return minutes.toString() + ":" + Helper.zeroPad( seconds, 2 );
 		}
 	}
 }

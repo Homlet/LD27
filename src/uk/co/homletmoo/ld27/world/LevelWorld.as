@@ -89,7 +89,8 @@ package uk.co.homletmoo.ld27.world
 				var trap:TrapDoor = new TrapDoor(
 					e.@x * Display.SCALE,
 					e.@y * Display.SCALE,
-					getCircuitId( e.@circuit )
+					getCircuitId( e.@circuit ),
+					strToBool( e.@flipped )
 				);
 				
 				addToCircuit( e.@circuit, trap );
@@ -113,7 +114,8 @@ package uk.co.homletmoo.ld27.world
 				var fan:Fan = new Fan(
 					e.@x * Display.SCALE,
 					e.@y * Display.SCALE,
-					getCircuitId( e.@circuit )
+					getCircuitId( e.@circuit ),
+					e.@rotation
 				);
 				
 				addToCircuit( e.@circuit, fan );
@@ -142,6 +144,7 @@ package uk.co.homletmoo.ld27.world
 				add( exit );
 			}
 			
+			Sound.P_ON.play( 0.1 );
 			setPowered();
 		}
 		
@@ -149,10 +152,17 @@ package uk.co.homletmoo.ld27.world
 		{
 			powerTimer -= FP.elapsed;
 			
+			Time.TIME += FP.elapsed;
+			
 			if ( powerTimer <= 0.0 )
 			{
 				powerTimer = 10.0;
 				yellowPowered = !yellowPowered;
+				
+				if ( yellowPowered )
+					Sound.P_ON.play( 0.1 );
+				else
+					Sound.P_OFF.play( 0.1 );
 				
 				setPowered();
 			}
@@ -199,6 +209,19 @@ package uk.co.homletmoo.ld27.world
 			}
 		}
 		
+		private function strToBool( s:String ):Boolean
+		{
+			switch ( s )
+			{
+			case "true":
+			case "True":
+				return true;
+				
+			default:
+				return false;
+			}
+		}
+		
 		private function getCircuitId( s:String ):int
 		{
 			switch ( s )
@@ -219,6 +242,7 @@ package uk.co.homletmoo.ld27.world
 		private function setPowered():void
 		{
 			Main.quake.start( 0.4, 0.3 );
+			Sound.SWITCH.play( 0.1 );
 			
 			vignette.visible = !yellowPowered;
 			

@@ -14,9 +14,13 @@ package uk.co.homletmoo.ld27.entity
 	import uk.co.homletmoo.ld27.Display;
 	import uk.co.homletmoo.ld27.entity.powered.Door;
 	import uk.co.homletmoo.ld27.entity.powered.Fan;
+	import uk.co.homletmoo.ld27.entity.powered.Spikes;
 	import uk.co.homletmoo.ld27.entity.powered.TrapDoor;
+	import uk.co.homletmoo.ld27.Helper;
+	import uk.co.homletmoo.ld27.InputRegistry;
 	import uk.co.homletmoo.ld27.Layer;
 	import uk.co.homletmoo.ld27.Main;
+	import uk.co.homletmoo.ld27.Sound;
 	import uk.co.homletmoo.ld27.world.LevelWorld;
 	
 	/**
@@ -35,6 +39,7 @@ package uk.co.homletmoo.ld27.entity
 		
 		private static const SPEED:Number = 300.0;
 		private static const JUMP_SPEED:Number = 300.0;
+		private static const FAN_POWER:Number = 600.0;
 		private static const ACCEL:Number = 500.0;
 		
 		private var startPos:Point;
@@ -84,9 +89,10 @@ package uk.co.homletmoo.ld27.entity
 			
 			onGround = collide( Layer.C_LEVEL, x, y + 1 ) != null;
 			
-			if ( collide( Layer.C_HAZARD, x, y ) != null )
+			if ( collide( Layer.C_HAZARD, x, y + 1 ) != null )
 			{
 				active = false;
+				Sound.HURT.play( 0.35 );
 				reset();
 				return;
 			}
@@ -134,11 +140,13 @@ package uk.co.homletmoo.ld27.entity
 				e = collide( Layer.C_FAN, x, y );
 				
 				if ( e is Fan )
-				{
+				{				
 					var reach:Number = ( 64 * Display.SCALE );
-					var proximity:Number = reach - ( e.x - x );
+					var proximity:Number = reach - new Point( e.x - x, e.y - y ).length;
 					
-					acceleration.x += -ACCEL * 5 * proximity / reach;
+					acceleration.x += ( -FAN_POWER * 5 * proximity / reach ) * Math.cos( (e as Fan).angleRad );
+					
+					acceleration.y += (  FAN_POWER * 5 * proximity / reach ) * Math.sin( (e as Fan).angleRad );
 				}
 			}
 			
@@ -178,7 +186,7 @@ package uk.co.homletmoo.ld27.entity
 			moveBy(
 				velocity.x * FP.elapsed,
 				velocity.y * FP.elapsed,
-				Layer.C_LEVEL
+				new Array( Layer.C_LEVEL, Layer.C_HAZARD )
 			);
 			
 			setAnimation();
@@ -199,7 +207,7 @@ package uk.co.homletmoo.ld27.entity
 		}
 		
 		override public function moveCollideY( e:Entity ):Boolean
-		{
+		{			
 			velocity.y = 0;
 			
 			return true;
@@ -230,25 +238,26 @@ package uk.co.homletmoo.ld27.entity
 		
 		private function acceptInput():void
 		{
-			if ( Input.pressed( Key.W ) && ledgeTimer > 0 )
+			if ( Input.pressed( InputRegistry.JUMP ) && ledgeTimer > 0 )
 			{
 				jumping = true;
+				Sound.JUMP.play( 0.15 );
 				velocity.y = -JUMP_SPEED;
 			}
 			
 			// Gravity
-			if ( Input.check( Key.W ) && jumping )
+			if ( Input.check( InputRegistry.JUMP ) && jumping )
 				velocity.y += Const.GRAVITY * FP.elapsed / 2.0;
 			else
 				velocity.y += Const.GRAVITY * FP.elapsed;
 			
-			if ( Input.check( Key.A ) )
+			if ( Input.check( InputRegistry.LEFT ) )
 			{
 				lastDirection = -1;
 				acceleration.x -= ACCEL;
 			}
 				
-			if ( Input.check( Key.D ) )
+			if ( Input.check( InputRegistry.RIGHT ) )
 			{
 				lastDirection = 1;
 				acceleration.x += ACCEL;

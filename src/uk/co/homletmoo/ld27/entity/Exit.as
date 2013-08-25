@@ -28,9 +28,9 @@ package uk.co.homletmoo.ld27.entity
 			
 			addGraphic( spriteMap );
 			setHitbox(
-				10 * Display.SCALE,
-				2 * Display.SCALE,
-				-3 * Display.SCALE,
+				  6 * Display.SCALE,
+				  2 * Display.SCALE,
+				 -5 * Display.SCALE,
 				-14 * Display.SCALE
 			);
 		}

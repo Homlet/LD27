@@ -5,6 +5,7 @@ package uk.co.homletmoo.ld27.entity
 	import uk.co.homletmoo.ld27.Assets;
 	import uk.co.homletmoo.ld27.Display;
 	import uk.co.homletmoo.ld27.Layer;
+	import uk.co.homletmoo.ld27.Sound;
 	import uk.co.homletmoo.ld27.world.LevelWorld;
 	
 	/**
@@ -63,6 +64,8 @@ package uk.co.homletmoo.ld27.entity
 			if ( isDown && collide( Layer.C_PLAYER, x, y ) == null )
 			{
 				isDown = false;
+				
+				Sound.B_UP.play( 0.25 );
 				up();
 			}
 		}
@@ -73,6 +76,7 @@ package uk.co.homletmoo.ld27.entity
 			{
 				isDown = true;
 				
+				Sound.B_DOWN.play( 0.5 );
 				spriteMap.play( DOWN );
 			}
 		}

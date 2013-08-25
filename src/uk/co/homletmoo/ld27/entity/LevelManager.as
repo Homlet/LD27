@@ -5,6 +5,7 @@ package uk.co.homletmoo.ld27.entity
 	import net.flashpunk.utils.Ease;
 	import uk.co.homletmoo.ld27.Assets;
 	import uk.co.homletmoo.ld27.Display;
+	import uk.co.homletmoo.ld27.Sound;
 	import uk.co.homletmoo.ld27.world.LevelWorld;
 	
 	/**
@@ -21,17 +22,28 @@ package uk.co.homletmoo.ld27.entity
 			levelsXML = new Vector.<XML>();
 			
 			levelsXML.push(
-				getLevelAsXML( Assets.OGMO_LEVEL_01 ),
-				getLevelAsXML( Assets.OGMO_LEVEL_02 ),
-				getLevelAsXML( Assets.OGMO_LEVEL_03 ),
-				getLevelAsXML( Assets.OGMO_LEVEL_04 )
+				getLevelAsXML( Assets.OGMO_LEVEL_001 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_002 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_003 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_004 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_005 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_006 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_007 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_008 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_009 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_010 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_011 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_012 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_013 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_014 ),
+				getLevelAsXML( Assets.OGMO_LEVEL_015 )
 			);
-			
-			nextLevel();
 		}
 		
 		public function exit():void
 		{
+			Sound.EXIT.play( 0.2 );
+			
 			FP.tween(
 				FP.screen,
 				{
