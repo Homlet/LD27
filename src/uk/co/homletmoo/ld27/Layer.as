@@ -14,5 +14,9 @@ package uk.co.homletmoo.ld27
 		
 		public static const C_LEVEL:String = "level";
 		public static const C_HAZARD:String = "hazard";
+		public static const C_FAN:String = "fan";
+		public static const C_EXIT:String = "exit";
+		public static const C_TOGGLE:String = "toggle";
+		public static const C_PLAYER:String = "player";
 	}
 }

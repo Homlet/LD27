@@ -31,8 +31,10 @@ package uk.co.homletmoo.ld27
 			quake = new Quake();
 			
 			FP.screen.color = 0xFF000000;
+			FP.screen.originX = Display.WIDTH / 2.0;
+			FP.screen.originY = Display.HEIGHT / 2.0;
 			
-//			FP.console.enable();
+			FP.console.enable();
 			FP.console.toggleKey = Key.TAB;
 		}
 		

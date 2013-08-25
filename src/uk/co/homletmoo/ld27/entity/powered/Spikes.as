@@ -4,6 +4,7 @@ package uk.co.homletmoo.ld27.entity.powered
 	import net.flashpunk.graphics.Spritemap;
 	import uk.co.homletmoo.ld27.Assets;
 	import uk.co.homletmoo.ld27.Display;
+	import uk.co.homletmoo.ld27.entity.Indicator;
 	import uk.co.homletmoo.ld27.entity.PoweredEntity;
 	import uk.co.homletmoo.ld27.Layer;
 	
@@ -19,10 +20,15 @@ package uk.co.homletmoo.ld27.entity.powered
 		private var spriteMap:Spritemap;
 		private var state:int;
 		
+		private var indicator:Indicator;
 		
-		public function Spikes( x:int, y:int ) 
+		
+		public function Spikes( x:int, y:int, circuit:int ) 
 		{
 			super( x, y );
+			
+			indicator = new Indicator( 4 * Display.SCALE, 21 * Display.SCALE, circuit );
+			addGraphic( indicator );
 			
 			layer = Layer.OBJECTS;
 			
@@ -32,13 +38,15 @@ package uk.co.homletmoo.ld27.entity.powered
 			spriteMap.add( STATE_OUT.toString(), [2, 3], 4, false );
 			
 			addGraphic( spriteMap );
-			setHitbox( 16 * Display.SCALE, 16 * Display.SCALE, 0, 0 );
+			setHitbox( 16 * Display.SCALE, 10 * Display.SCALE, 0, -6 * Display.SCALE );
 		}
 		
 		public function setPowered( powered:Boolean ):void
 		{
 			state = (powered) ? STATE_OUT : STATE_IN;
 			type = (powered) ? Layer.C_HAZARD : null;
+			
+			indicator.setPowered( powered );
 			
 			spriteMap.play( state.toString() );
 		}

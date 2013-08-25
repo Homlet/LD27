@@ -4,6 +4,7 @@ package uk.co.homletmoo.ld27.entity.powered
 	import net.flashpunk.graphics.Spritemap;
 	import uk.co.homletmoo.ld27.Assets;
 	import uk.co.homletmoo.ld27.Display;
+	import uk.co.homletmoo.ld27.entity.Indicator;
 	import uk.co.homletmoo.ld27.entity.PoweredEntity;
 	import uk.co.homletmoo.ld27.Layer;
 	
@@ -19,10 +20,15 @@ package uk.co.homletmoo.ld27.entity.powered
 		private var spriteMap:Spritemap;
 		private var state:int;
 		
+		private var indicator:Indicator;
 		
-		public function TrapDoor( x:int, y:int ) 
+		
+		public function TrapDoor( x:int, y:int, circuit:int ) 
 		{
 			super( x - 14 * Display.SCALE, y );
+			
+			indicator = new Indicator( 2 * Display.SCALE, 4 * Display.SCALE, circuit );
+			addGraphic( indicator );
 			
 			layer = Layer.OBJECTS;
 			
@@ -39,6 +45,8 @@ package uk.co.homletmoo.ld27.entity.powered
 		{
 			state = (powered) ? STATE_OPEN : STATE_CLOSED;
 			type = (powered) ? null : Layer.C_LEVEL;
+			
+			indicator.setPowered( powered );
 			
 			spriteMap.play( state.toString() );
 		}

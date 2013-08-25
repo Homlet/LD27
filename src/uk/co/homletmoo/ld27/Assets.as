@@ -68,10 +68,26 @@ package uk.co.homletmoo.ld27
 		public static const VIGNETTE_RAW:Class;
 		public static const VIGNETTE:BitmapData = FP.getBitmap( VIGNETTE_RAW );
 		
+		[Embed (source = "res/exit.png")]
+		public static const EXIT_RAW:Class;
+		public static const EXIT:BitmapData = FP.getBitmap( EXIT_RAW );
+		
+		[Embed (source = "res/indicator.png")]
+		public static const INDICATOR_RAW:Class;
+		public static const INDICATOR:BitmapData = FP.getBitmap( INDICATOR_RAW );
+		
+		[Embed (source = "res/toggles.png")]
+		public static const TOGGLE_RAW:Class;
+		public static const TOGGLE:BitmapData = FP.getBitmap( TOGGLE_RAW );
+		
 		// Ogmo
 		[Embed (source = "ogmo/level_01.oel", mimeType = "application/octet-stream" )]
 		public static const OGMO_LEVEL_01:Class;
 		[Embed (source = "ogmo/level_02.oel", mimeType = "application/octet-stream" )]
 		public static const OGMO_LEVEL_02:Class;
+		[Embed (source = "ogmo/level_03.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_03:Class;
+		[Embed (source = "ogmo/level_04.oel", mimeType = "application/octet-stream" )]
+		public static const OGMO_LEVEL_04:Class;
 	}
 }

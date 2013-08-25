@@ -6,7 +6,7 @@
 00000000000000000000
 00000000000000000000
 01111111111111111110
-01000110000001100010
+01000100000001100010
 01000000000000000010
 01111111011011111110
 00000001011010000000
@@ -72,7 +72,7 @@
     <tile x="3" y="5" id="4" />
     <tile x="3" y="6" id="7" />
     <tile x="3" y="7" id="12" />
-    <tile x="3" y="8" id="12" />
+    <tile x="3" y="8" id="10" />
     <tile x="3" y="9" id="1" />
     <tile x="3" y="10" id="4" />
     <tile x="3" y="11" id="4" />
@@ -103,7 +103,7 @@
     <tile x="5" y="4" id="4" />
     <tile x="5" y="5" id="4" />
     <tile x="5" y="6" id="4" />
-    <tile x="5" y="7" id="6" />
+    <tile x="5" y="7" id="16" />
     <tile x="5" y="8" id="14" />
     <tile x="5" y="9" id="1" />
     <tile x="5" y="10" id="4" />
@@ -118,8 +118,8 @@
     <tile x="6" y="3" id="4" />
     <tile x="6" y="4" id="4" />
     <tile x="6" y="5" id="4" />
-    <tile x="6" y="6" id="4" />
-    <tile x="6" y="7" id="8" />
+    <tile x="6" y="6" id="7" />
+    <tile x="6" y="7" id="11" />
     <tile x="6" y="8" id="12" />
     <tile x="6" y="9" id="1" />
     <tile x="6" y="10" id="4" />
@@ -135,7 +135,7 @@
     <tile x="7" y="4" id="4" />
     <tile x="7" y="5" id="4" />
     <tile x="7" y="6" id="7" />
-    <tile x="7" y="7" id="12" />
+    <tile x="7" y="7" id="11" />
     <tile x="7" y="8" id="12" />
     <tile x="7" y="9" id="2" />
     <tile x="7" y="10" id="5" />
@@ -151,10 +151,10 @@
     <tile x="8" y="4" id="4" />
     <tile x="8" y="5" id="4" />
     <tile x="8" y="6" id="7" />
-    <tile x="8" y="7" id="12" />
+    <tile x="8" y="7" id="14" />
     <tile x="8" y="8" id="13" />
     <tile x="8" y="9" id="13" />
-    <tile x="8" y="10" id="14" />
+    <tile x="8" y="10" id="15" />
     <tile x="8" y="11" id="12" />
     <tile x="8" y="12" id="12" />
     <tile x="8" y="13" id="1" />
@@ -167,7 +167,7 @@
     <tile x="9" y="4" id="4" />
     <tile x="9" y="5" id="4" />
     <tile x="9" y="6" id="7" />
-    <tile x="9" y="7" id="14" />
+    <tile x="9" y="7" id="12" />
     <tile x="9" y="8" id="12" />
     <tile x="9" y="9" id="0" />
     <tile x="9" y="10" id="3" />
@@ -204,7 +204,7 @@
     <tile x="11" y="9" id="12" />
     <tile x="11" y="10" id="12" />
     <tile x="11" y="11" id="12" />
-    <tile x="11" y="12" id="12" />
+    <tile x="11" y="12" id="15" />
     <tile x="11" y="13" id="12" />
     <tile x="11" y="14" id="1" />
     <tile x="11" y="15" id="4" />
@@ -296,7 +296,7 @@
     <tile x="17" y="5" id="4" />
     <tile x="17" y="6" id="7" />
     <tile x="17" y="7" id="12" />
-    <tile x="17" y="8" id="12" />
+    <tile x="17" y="8" id="11" />
     <tile x="17" y="9" id="1" />
     <tile x="17" y="10" id="4" />
     <tile x="17" y="11" id="4" />
@@ -339,13 +339,13 @@
   </Tiles>
   <Entities>
     <Player id="0" x="48" y="128" />
-    <Door id="1" x="80" y="128" />
-    <Door id="2" x="224" y="128" />
+    <Door id="1" x="80" y="128" circuit="YELLOW" />
+    <Door id="2" x="224" y="128" circuit="YELLOW" />
     <Exit id="3" x="256" y="128" />
-    <Trapdoor id="4" x="128" y="144" />
-    <Trapdoor id="5" x="176" y="144" />
-    <Spikes id="6" x="128" y="192" rotation="0" />
-    <Spikes id="7" x="176" y="208" rotation="0" />
-    <Fan id="8" x="208" y="112" rotation="0" />
+    <Trapdoor id="4" x="128" y="144" circuit="YELLOW" />
+    <Trapdoor id="5" x="176" y="144" circuit="YELLOW" />
+    <Spikes id="6" x="128" y="192" circuit="YELLOW" />
+    <Spikes id="7" x="176" y="208" circuit="YELLOW" />
+    <Fan id="8" x="208" y="112" circuit="YELLOW" />
   </Entities>
 </level>
