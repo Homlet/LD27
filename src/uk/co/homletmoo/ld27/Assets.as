@@ -89,6 +89,10 @@ package uk.co.homletmoo.ld27
 		public static const START_RAW:Class;
 		public static const START:BitmapData = FP.getBitmap( START_RAW );
 		
+		[Embed (source = "res/end.png")]
+		public static const END_RAW:Class;
+		public static const END:BitmapData = FP.getBitmap( END_RAW );
+		
 		// Ogmo
 		[Embed (source = "ogmo/level_001.oel", mimeType = "application/octet-stream" )]
 		public static const OGMO_LEVEL_001:Class;

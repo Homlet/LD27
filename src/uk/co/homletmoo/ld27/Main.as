@@ -52,7 +52,7 @@ package uk.co.homletmoo.ld27
 			addChild( pauseFader );
 			
 //			FP.console.enable();
-			FP.console.toggleKey = Key.TAB;
+//			FP.console.toggleKey = Key.TAB;
 		}
 		
 		override public function init():void
@@ -92,6 +92,7 @@ package uk.co.homletmoo.ld27
 			{
 				isPaused = false;
 				pauseFader.visible = false;
+				FP.world.active = true;
 			} else if ( Input.pressed( InputRegistry.PAUSE ) )
 			{
 				if ( !isPaused )

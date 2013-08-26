@@ -6,7 +6,9 @@ package uk.co.homletmoo.ld27.entity
 	import uk.co.homletmoo.ld27.Assets;
 	import uk.co.homletmoo.ld27.Display;
 	import uk.co.homletmoo.ld27.Sound;
+	import uk.co.homletmoo.ld27.world.EndWorld;
 	import uk.co.homletmoo.ld27.world.LevelWorld;
+	import uk.co.homletmoo.ld27.world.StartWorld;
 	
 	/**
 	 * ...
@@ -64,20 +66,31 @@ package uk.co.homletmoo.ld27.entity
 			FP.screen.scaleY = 1.0;
 			FP.screen.angle = 0.0;
 			
-			var xml:XML = levelsXML[currentLevelIndex++];
-			
-			var tiles:XMLList = xml.Tiles.tile;
-			var grid:String = xml.Collision.*;
-			var entities:XMLList = xml.Entities;
-			
-			FP.world = new LevelWorld(
-				new Level( xml.@width, xml.@height, tiles, grid ),
-				entities
-			);
+			if ( currentLevelIndex < levelsXML.length )
+			{
+				var xml:XML = levelsXML[currentLevelIndex++];
+				
+				var tiles:XMLList = xml.Tiles.tile;
+				var grid:String = xml.Collision.*;
+				var entities:XMLList = xml.Entities;
+				
+				FP.world = new LevelWorld(
+					new Level( xml.@width, xml.@height, tiles, grid ),
+					entities
+				);
+			} else
+			{
+				FP.world = new EndWorld();
+			}
 		}
 		
 		public function update():void
 		{
+		}
+		
+		public function reset():void
+		{
+			currentLevelIndex = 0;
 		}
 		
 		private function getLevelAsXML( xml:Class ):XML

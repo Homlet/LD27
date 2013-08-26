@@ -51,6 +51,7 @@ package uk.co.homletmoo.ld27.entity
 		private var jumpTimer:Number;
 		private var ledgeTimer:Number;
 		private var lastDirection:int = 1;
+		private var exited:Boolean = false;
 		
 		private var velocity:Point;
 		private var acceleration:Point;
@@ -166,7 +167,11 @@ package uk.co.homletmoo.ld27.entity
 				{
 					FP.world.active = false;
 					
-					Main.levelManager.exit();
+					if ( !exited )
+					{
+						Main.levelManager.exit();
+						exited = true;
+					}
 					return;
 				}
 			}
